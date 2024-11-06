@@ -33,7 +33,7 @@ def handle_client(client_s):
 def broadcast(message, sender_s):
     for client in clients:
         if client != sender_s:
-            client.send(message).encode()
+            client.send(message.encode())
 
 def start_server():
     """
