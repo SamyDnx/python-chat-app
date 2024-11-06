@@ -12,9 +12,6 @@ print(f"server listening on {IP}:{PORT}")
 clients = []
 
 def handle_client(client_s):
-    """
-    Handle messages from client
-    """
     while True:
         try:
             message = client_s.recv(1024).decode()
@@ -36,9 +33,6 @@ def broadcast(message, sender_s):
             client.send(message.encode())
 
 def start_server():
-    """
-    Accept client connection and open a new thread for each client
-    """
     while True:
         client_s, client_addr = serv.accept()
         print("New connection from ", client_addr)
