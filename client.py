@@ -1,14 +1,16 @@
-import sys
 import socket
 import threading
 
 IP = "127.0.0.1"
 PORT = 42069
 
+username = input("Enter your usename: ")
+
 client = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 client.connect((IP, PORT))
 
-username = input("Enter your usename: ")
+message = f"---{username} entered the chat---"
+client.send(message.encode())
 
 def receive_message():
     while True:
@@ -20,7 +22,7 @@ def receive_message():
         except:
             print("\rdisconnected from server")
             client.close()
-            sys.exit()
+            break
 
 def send_message():
     while True:

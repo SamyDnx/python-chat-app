@@ -16,7 +16,11 @@ def handle_client(client_s):
         try:
             message = client_s.recv(1024).decode()
             if message:
-                print("message received: ", message)
+                if message[0] == "-":
+                    _message = "".join(lettre for lettre in message if (lettre.isalnum() or lettre == " "))
+                    print("status event received: ", _message)
+                else:
+                    print("message received: ", message)
                 broadcast(message, client_s)
             else:
                 clients.remove(client_s)
