@@ -27,6 +27,7 @@ def handle_client(client_s):
             client_s.close()
             break
 
+# display message for all other clients
 def broadcast(message, sender_s):
     for client in clients:
         if client != sender_s:
